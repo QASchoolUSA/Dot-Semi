@@ -51,7 +51,15 @@
             background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.7)), url('https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            /* Use scroll on mobile to prevent iOS/Android from hiding the background image */
+            background-attachment: scroll;
+        }
+        
+        /* Re-enable parallax effect on larger screens */
+        @media (min-width: 768px) {
+            .hero-bg {
+                background-attachment: fixed;
+            }
         }
         
         .service-bg {
