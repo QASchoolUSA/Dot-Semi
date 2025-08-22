@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoadingSpinner from './components/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
+import Clarity from './components/Clarity';
 import './App.css';
 
 // Lazy load page components for code splitting
@@ -11,9 +12,13 @@ const HollywoodFL = React.lazy(() => import('./pages/HollywoodFL'));
 const DOTInspectionRequirements = React.lazy(() => import('./pages/DOTInspectionRequirements'));
 
 function App() {
+  // Replace 'YOUR_CLARITY_PROJECT_ID' with your actual Microsoft Clarity project ID
+  const clarityProjectId = import.meta.env.VITE_CLARITY_PROJECT_ID || 'YOUR_CLARITY_PROJECT_ID';
+
   return (
     <>
       <ScrollToTop />
+      <Clarity projectId={clarityProjectId} />
       <Suspense fallback={<LoadingSpinner />}>
         <Routes>
           <Route path="/" element={<Home />} />
